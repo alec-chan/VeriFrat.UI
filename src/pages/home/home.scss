@@ -1,3 +1,45 @@
 page-home {
+}
+#map {
+    width: 100%;
+    height:100%;
+}
 
+
+.round-fab {
+    width: 6em;
+    height: 1.2em;
+    border-radius: 10px;
+    right: 4.2em;
+    background-color: #EE2D2B;
+    color: #fff;
+    font-size: 3em;
+}
+
+#search {
+    border-radius: 40px;
+    position: fixed;
+    top: 30px;
+    z-index: 100000000;
+
+    width: 80%;
+    height: 40px;
+    border: none;
+    font-size: 25px;
+    padding-right: 15px;
+    padding-left: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.fab {
+    background-color: #EE2D2B;
+}
+
+.fab ion-icon {
+    font-size: 3em;
+}
+
+.no-scroll .scroll-content{
+    overflow: hidden;
 }

@@ -83,6 +83,18 @@ $colors: (
 
 // Fonts
 // --------------------------------------------------
+@font-face {
+  font-family: SourceSansSemi;
+  src: url('../assets/fonts/SourceSansPro-SemiBold.ttf');
+}
+@font-face {
+  font-family: SourceSansBlack;
+  src: url('../assets/fonts/SourceSansPro-Black.ttf');
+}
 
-@import "roboto";
-@import "noto-sans";
+body, span, button, h1, h2, h3, h4, h5, h6, p, input, ion-item, ion-title {
+  font-family: 'SourceSansSemi' !important;
+}
+
+$fab-size: 66px;
+
