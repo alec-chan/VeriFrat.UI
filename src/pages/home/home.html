@@ -11,7 +11,7 @@
         <button ion-fab><ion-icon name="add"></ion-icon></button>
         <ion-fab-list side="top">
             <button ion-fab class="round-fab">View Map</button>
-            <button ion-fab class="round-fab">Scan Codes</button>
+            <button ion-fab (click)="openScanner()" class="round-fab">Scan Codes</button>
             <button ion-fab class="round-fab">Create Event</button>
             <button ion-fab class="round-fab">Settings</button>
         </ion-fab-list>
