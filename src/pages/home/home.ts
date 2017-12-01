@@ -3,6 +3,8 @@ import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js'
 import { NavController } from 'ionic-angular';
 import { Geolocation, Geoposition} from 'ionic-native'; 
 import { TextInput } from 'ionic-angular/components/input/input';
+import { Scanner } from '../scanner/scanner';
+import { LoginSignup } from '../login-signup/loginsignup';
 import * as $ from 'jquery';
 
 @Component({
@@ -15,7 +17,6 @@ export class HomePage {
   dimmer: HTMLElement;
   
   constructor(public navCtrl: NavController) {
-
   }
   
   ionViewDidEnter() {
@@ -32,6 +33,7 @@ export class HomePage {
         this.Coordinates = position.coords;
         this.executemap();
     });
+
   }
 
   searchBarUnfocus() {
@@ -72,5 +74,9 @@ export class HomePage {
     var lat = partyObject.Latitude;
     var longitude = partyObject.Longitude;
     var date = partyObject.Date;
+  }
+
+  openScanner() {
+    this.navCtrl.push(Scanner);
   }
 }
