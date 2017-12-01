@@ -10,6 +10,8 @@ import { LoginSignup } from '../pages/login-signup/loginsignup';
 import { Scanner } from '../pages/scanner/scanner';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),    
     NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
