@@ -6,6 +6,7 @@ import { TextInput } from 'ionic-angular/components/input/input';
 import { Scanner } from '../scanner/scanner';
 import { LoginSignup } from '../login-signup/loginsignup';
 import * as $ from 'jquery';
+import { Storage } from '@ionic/storage/dist/storage';
 
 @Component({
   selector: 'page-home',
@@ -16,7 +17,16 @@ export class HomePage {
   watch: any;
   dimmer: HTMLElement;
   
-  constructor(public navCtrl: NavController) {
+  userID: string;
+  userToken: string;
+
+  constructor(public navCtrl: NavController, private storage: Storage) {
+    storage.get('userID').then((val) => {
+      this.userID = val;
+    });
+    storage.get('userToken').then((val) => {
+      this.userToken = val;
+    });
   }
   
   ionViewDidEnter() {
@@ -66,14 +76,43 @@ export class HomePage {
   // queries the API for either public parties OR parties that
   // the current user is invited to and filters them by name
   loadCards(input) {
-    
+
+    $.ajax({
+      url: 'http://localhost:5000/parties/search',
+      type: 'POST',
+      data: {
+              Name: input, 
+              UserToken: this.userToken,
+              UserID: this.userID,
+              Lat: 43.077732, // use geopposition
+              Long: -89.417760
+      },
+      success: function(result) {
+        var partyListObject = JSON.parse(result);
+        var partyList = partyListObject.partyList;
+        for(var i=0; i < partyList.length; i++) {
+          this.createCard(partyList[i]);
+        }
+      },
+    });
   }
 
   createCard(partyObject: any) {
+    var ID = partyObject.ID;
     var name = partyObject.Name;
-    var lat = partyObject.Latitude;
-    var longitude = partyObject.Longitude;
+    var latLong = partyObject.latLong;
     var date = partyObject.Date;
+    var sponsor = partyObject.Sponsor;
+    var Attendees = partyObject.Attendees;
+
+    var cardhtml = "<ion-card>\
+      <ion-card-header>\
+        "+partyObject.name+"\
+      </ion-card-header>\
+      <ion-card-content>\
+        <!-- Add card content here! -->\
+      </ion-card-content>\
+    </ion-card>"
   }
 
   openScanner() {
